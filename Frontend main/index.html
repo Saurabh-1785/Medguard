@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MedGuard - Secure Health Records</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="logo">
+            <i class="fas fa-shield-alt"></i>
+            <span>MedGuard</span>
+          </div>
+          <div class="nav-links">
+            <button id="loginBtn" class="btn btn-outline">Login</button>
+            <button id="signupBtn" class="btn btn-primary">Sign Up</button>
+            <button id="logoutBtn" class="btn btn-danger" style="display: none">
+              Logout
+            </button>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <!-- Authentication Section -->
+        <section id="authSection" class="auth-container">
+          <div class="auth-card fade-in">
+            <div class="auth-header">
+              <h2>Welcome to MedGuard</h2>
+              <p>Secure, decentralized health records</p>
+            </div>
+
+            <div class="auth-tabs">
+              <div class="auth-tab active" data-tab="login">Login</div>
+              <div class="auth-tab" data-tab="signup">Sign Up</div>
+            </div>
+
+            <div id="loginForm" class="auth-form active">
+              <div class="role-selector">
+                <div class="role-option active" data-role="patient">
+                  <i class="fas fa-user"></i>
+                  <div>Patient</div>
+                </div>
+                <div class="role-option" data-role="doctor">
+                  <i class="fas fa-user-md"></i>
+                  <div>Doctor</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="loginEmail">Email</label>
+                <input
+                  type="email"
+                  id="loginEmail"
+                  class="form-control"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="loginPassword">Password</label>
+                <input
+                  type="password"
+                  id="loginPassword"
+                  class="form-control"
+                  placeholder="Enter your password"
+                />
+              </div>
+
+              <div class="form-actions">
+                <a href="#">Forgot password?</a>
+                <button id="loginSubmitBtn" class="btn btn-primary">
+                  Login
+                </button>
+              </div>
+            </div>
+
+            <div id="signupForm" class="auth-form">
+              <div class="role-selector">
+                <div class="role-option active" data-role="patient">
+                  <i class="fas fa-user"></i>
+                  <div>Patient</div>
+                </div>
+                <div class="role-option" data-role="doctor">
+                  <i class="fas fa-user-md"></i>
+                  <div>Doctor</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="signupName">Full Name</label>
+                <input
+                  type="text"
+                  id="signupName"
+                  class="form-control"
+                  placeholder="Enter your full name"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="signupEmail">Email</label>
+                <input
+                  type="email"
+                  id="signupEmail"
+                  class="form-control"
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="signupPassword">Password</label>
+                <input
+                  type="password"
+                  id="signupPassword"
+                  class="form-control"
+                  placeholder="Create a password"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="signupConfirmPassword">Confirm Password</label>
+                <input
+                  type="password"
+                  id="signupConfirmPassword"
+                  class="form-control"
+                  placeholder="Confirm your password"
+                />
+              </div>
+
+              <div class="form-check">
+                <input type="checkbox" id="termsAgree" />
+                <label for="termsAgree"
+                  >I agree to the Terms of Service and Privacy Policy</label
+                >
+              </div>
+
+              <div class="form-actions">
+                <div></div>
+                <button id="signupSubmitBtn" class="btn btn-primary">
+                  Create Account
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Patient Dashboard -->
+        <section id="patientDashboard" class="dashboard">
+          <div class="dashboard-header">
+            <div class="user-welcome">
+              <div class="user-avatar">J</div>
+              <div>
+                <p>Patient Dashboard</p>
+              </div>
+            </div>
+            <div class="dashboard-actions">
+              <button class="btn btn-outline">Settings</button>
+              <button class="btn btn-primary">Upload Record</button>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header">
+                <i class="fas fa-file-medical"></i>
+                <h3>Medical Records</h3>
+              </div>
+              <div class="dashboard-card-body">
+                <p>
+                  You have 5 medical records stored securely on the blockchain.
+                </p>
+              </div>
+              <div class="dashboard-card-footer">
+                <button class="btn btn-outline">View All</button>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="dashboard-card-header">
+                <i class="fas fa-user-md"></i>
+                <h3>Doctor Access</h3>
+              </div>
+              <div class="dashboard-card-body">
+                <p>3 doctors currently have access to your medical records.</p>
+              </div>
+              <div class="dashboard-card-footer">
+                <button class="btn btn-outline">Manage Access</button>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="dashboard-card-header">
+                <i class="fas fa-bell"></i>
+                <h3>Notifications</h3>
+              </div>
+              <div class="dashboard-card-body">
+                <p>You have 2 new access requests from healthcare providers.</p>
+              </div>
+              <div class="dashboard-card-footer">
+                <button class="btn btn-outline">View All</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="upload-area" id="uploadArea">
+            <i class="fas fa-cloud-upload-alt"></i>
+            <h3>Upload Medical Record</h3>
+            <p>
+              Drag and drop your medical record files here or click to browse
+            </p>
+            <button class="btn btn-primary">Select Files</button>
+            <input
+              type="file"
+              id="fileInput"
+              class="file-input"
+              accept=".pdf,.doc,.docx"
+            />
+          </div>
+
+          <div class="records-list">
+            <div class="records-header">Recent Medical Records</div>
+            <div class="record-item">
+              <div class="record-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="record-info">
+                <div class="record-title">Blood Test Results.pdf</div>
+                <div class="record-meta">
+                  Uploaded on March 8, 2025 • 2.4 MB
+                </div>
+              </div>
+              <div class="record-actions">
+                <button class="btn btn-outline">View</button>
+                <button class="btn btn-outline">Share</button>
+              </div>
+            </div>
+            <div class="record-item">
+              <div class="record-icon">
+                <i class="fas fa-file-word"></i>
+              </div>
+              <div class="record-info">
+                <div class="record-title">Annual Checkup Report.doc</div>
+                <div class="record-meta">
+                  Uploaded on March 7, 2025 • 1.8 MB
+                </div>
+              </div>
+              <div class="record-actions">
+                <button class="btn btn-outline">View</button>
+                <button class="btn btn-outline">Share</button>
+              </div>
+            </div>
+            <div class="record-item">
+              <div class="record-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="record-info">
+                <div class="record-title">X-Ray Results.pdf</div>
+                <div class="record-meta">
+                  Uploaded on February 28, 2025 • 5.2 MB
+                </div>
+              </div>
+              <div class="record-actions">
+                <button class="btn btn-outline">View</button>
+                <button class="btn btn-outline">Share</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-prediction">
+            <div class="ai-prediction-header">
+              <i class="fas fa-robot"></i>
+              <h3>AI Health Predictions</h3>
+            </div>
+            <p>
+              Based on your medical records, our AI has analyzed potential
+              health risks:
+            </p>
+
+            <div class="prediction-result">
+              <div class="prediction-item">
+                <div class="prediction-disease">Diabetes</div>
+                <div class="prediction-probability">15%</div>
+              </div>
+              <div class="prediction-item">
+                <div class="prediction-disease">Lung Cancer</div>
+                <div class="prediction-probability">22%</div>
+              </div>
+              <div class="prediction-item">
+                <div class="prediction-disease">Chronic Kidney Diseases</div>
+                <div class="prediction-probability">8%</div>
+              </div>
+            </div>
+
+            <div style="margin-top: 20px">
+              <button class="btn btn-primary">Run New Analysis</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Doctor Dashboard -->
+        <section id="doctorDashboard" class="dashboard">
+          <div class="dashboard-header">
+            <div class="user-welcome">
+              <div class="user-avatar">D</div>
+              <div>
+                <h2>Welcome, Dr. <span id="doctorName">Simran Kapoor</span></h2>
+                <p>Doctor Dashboard</p>
+              </div>
+            </div>
+            <div class="dashboard-actions">
+              <button class="btn btn-outline">Settings</button>
+              <button class="btn btn-primary">Request Access</button>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="dashboard-card">
+              <div class="dashboard-card-header">
+                <i class="fas fa-users"></i>
+                <h3>My Patients</h3>
+              </div>
+              <div class="dashboard-card-body">
+                <p>You have access to 12 patients' medical records.</p>
+              </div>
+              <div class="dashboard-card-footer">
+                <button class="btn btn-outline">View All</button>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="dashboard-card-header">
+                <i class="fas fa-clock"></i>
+                <h3>Pending Requests</h3>
+              </div>
+              <div class="dashboard-card-body">
+                <p>You have 3 pending access requests to patient records.</p>
+              </div>
+              <div class="dashboard-card-footer">
+                <button class="btn btn-outline">Check Status</button>
+              </div>
+            </div>
+
+            <div class="dashboard-card">
+              <div class="dashboard-card-header">
+                <i class="fas fa-bell"></i>
+                <h3>Notifications</h3>
+              </div>
+              <div class="dashboard-card-body">
+                <p>5 patients have shared new medical records with you.</p>
+              </div>
+              <div class="dashboard-card-footer">
+                <button class="btn btn-outline">View All</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="patient-search">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search patients by name or ID"
+            />
+            <button class="btn btn-primary">Search</button>
+          </div>
+
+          <div class="patient-list">
+            <div class="records-header">My Patients</div>
+            <div class="patient-item" data-patient-id="1">
+              <div class="patient-avatar">J</div>
+              <div class="patient-info">
+                <div class="patient-name">Ramesh Rao</div>
+                <div class="patient-details">
+                  ID: P12345 • Last visit: March 1, 2025
+                </div>
+              </div>
+            </div>
+            <div class="patient-item" data-patient-id="2">
+              <div class="patient-avatar">A</div>
+              <div class="patient-info">
+                <div class="patient-name">Kartik</div>
+                <div class="patient-details">
+                  ID: P12346 • Last visit: February 25, 2025
+                </div>
+              </div>
+            </div>
+            <div class="patient-item" data-patient-id="3">
+              <div class="patient-avatar">R</div>
+              <div class="patient-info">
+                <div class="patient-name">Rashmi Rana</div>
+                <div class="patient-details">
+                  ID: P12347 • Last visit: January 28, 2025
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-prediction">
+            <div class="ai-prediction-header">
+              <i class="fas fa-robot"></i>
+              <h3>AI Diagnostic Assistant</h3>
+            </div>
+            <p>
+              Upload a patient's medical record to get AI-powered diagnostic
+              suggestions:
+            </p>
+
+            <div class="upload-area" id="doctorUploadArea">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <h3>Upload Medical Record for Analysis</h3>
+              <p>
+                Drag and drop patient medical record files here or click to
+                browse
+              </p>
+              <button class="btn btn-primary">Select Files</button>
+              <input
+                type="file"
+                id="doctorFileInput"
+                class="file-input"
+                accept=".pdf,.doc,.docx"
+              />
+            </div>
+
+            <div
+              class="prediction-result"
+              style="display: none"
+              id="doctorPredictionResult"
+            >
+              <div class="prediction-item">
+                <div class="prediction-disease">Diabetes</div>
+                <div class="prediction-probability">78%</div>
+              </div>
+              <div class="prediction-item">
+                <div class="prediction-disease">Lung Cancer</div>
+                <div class="prediction-probability">45%</div>
+              </div>
+              <div class="prediction-item">
+                <div class="prediction-disease">Chronic Kidney Disease</div>
+                <div class="prediction-probability">23%</div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Patient Record Modal -->
+    <div class="modal-overlay" id="patientRecordModal">
+      <div class="modal">
+        <button class="modal-close" id="closePatientRecordModal">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-header">
+          <h2>Patient Record</h2>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Patient Name</label>
+            <div class="form-control" style="background-color: #f9fafb">
+              John Doe
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Patient ID</label>
+            <div class="form-control" style="background-color: #f9fafb">
+              P12345
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Date of Birth</label>
+            <div class="form-control" style="background-color: #f9fafb">
+              January 15, 1985
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Medical History</label>
+            <div
+              class="form-control"
+              style="background-color: #f9fafb; height: 100px; overflow-y: auto"
+            >
+              Patient has a history of hypertension and Type 2 diabetes. Family
+              history of cardiovascular disease. No known allergies. Previous
+              surgeries include appendectomy in 2010.
+            </div>
+          </div>
+          <div class="records-list" style="margin-top: 20px">
+            <div class="records-header">Medical Records</div>
+            <div class="record-item">
+              <div class="record-icon">
+                <i class="fas fa-file-pdf"></i>
+              </div>
+              <div class="record-info">
+                <div class="record-title">Blood Test Results.pdf</div>
+                <div class="record-meta">
+                  Uploaded on March 15, 2023 • 2.4 MB
+                </div>
+              </div>
+              <div class="record-actions">
+                <button class="btn btn-outline">View</button>
+                <button class="btn btn-outline">Download</button>
+              </div>
+            </div>
+            <div class="record-item">
+              <div class="record-icon">
+                <i class="fas fa-file-word"></i>
+              </div>
+              <div class="record-info">
+                <div class="record-title">Annual Checkup Report.doc</div>
+                <div class="record-meta">
+                  Uploaded on February 28, 2023 • 1.8 MB
+                </div>
+              </div>
+              <div class="record-actions">
+                <button class="btn btn-outline">View</button>
+                <button class="btn btn-outline">Download</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline">Request More Access</button>
+          <button class="btn btn-primary">Add Notes</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Upload Success Modal -->
+    <div class="modal-overlay" id="uploadSuccessModal">
+      <div class="modal">
+        <button class="modal-close" id="closeUploadSuccessModal">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-header">
+          <h2>Upload Successful</h2>
+        </div>
+        <div class="modal-body" style="text-align: center">
+          <i
+            class="fas fa-check-circle"
+            style="
+              font-size: 4rem;
+              color: var(--secondary);
+              margin-bottom: 20px;
+            "
+          ></i>
+          <p>
+            Your medical record has been successfully uploaded and securely
+            stored on the blockchain.
+          </p>
+          <div style="margin-top: 20px">
+            <p>
+              <strong>File:</strong>
+              <span id="uploadedFileName">Blood Test Results.pdf</span>
+            </p>
+            <p>
+              <strong>Size:</strong> <span id="uploadedFileSize">2.4 MB</span>
+            </p>
+            <p>
+              <strong>Uploaded on:</strong>
+              <span id="uploadedFileDate">March 8, 2023</span>
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline" id="uploadAnotherBtn">
+            Upload Another
+          </button>
+          <button class="btn btn-primary" id="viewRecordBtn">
+            View Record
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
